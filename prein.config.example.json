@@ -1,0 +1,28 @@
+{
+  "template": "~/Downloads/PreIn_template.xlsx",
+  "template_sheet": "Inbound - FTL",
+  "out_dir": "~/Downloads",
+  "out_prefix": "PreIn_",
+  "out_suffix": "_updated",
+  "tracking_regex": "",
+  "customer": "FTL",
+  "warehouse": "HORSTACC",
+  "collection": "Pokemon",
+  "grader": "PSA",
+  "orders_csv_glob": "./orders-cart-*.csv",
+  "psa_verify_glob": "./psa-verify-*.json",
+  "columns": {
+    "customer": 2,
+    "inbound_date": 3,
+    "tracking": 4,
+    "warehouse": 6,
+    "item_no": 7,
+    "collection": 11,
+    "card_name": 12,
+    "grader": 13,
+    "grade": 14,
+    "pack_size": 15,
+    "qty_ctns": 16,
+    "qty_pcs": 17
+  }
+}
