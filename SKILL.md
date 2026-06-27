@@ -62,6 +62,18 @@ SNKR's order API doesn't return PSA cert numbers directly. The skill backfills c
 
 Optional: `psa_verify_glob` JSON files (output of a PSA cert verifier) supply canonical card descriptions and exact grade numbers, overriding the CSV values when present.
 
+**Bundle orders:** if a SNKR transaction has qty>1, split it into one CSV row per physical card with its own `psa_cert`. Collapsed bundles will be skipped silently.
+
+## Verify coverage
+
+After step 1, confirm a cart's transactions are accounted for in the harvested shipments:
+
+```bash
+python3 scripts/check-cart-coverage.py <cart_id> [<cart_id>...]
+```
+
+Reports which trackings cover the cart and flags any tx not yet shipped.
+
 ## Requirements
 
 - Node 18+ (built-in `fetch`)

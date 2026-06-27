@@ -44,7 +44,19 @@ SNKRDUNK's order API doesn't return PSA cert numbers directly. The skill backfil
 
 You're responsible for building these CSVs (typically by scraping your cart pages — that part isn't included here since it depends on OCR/manual entry).
 
+**Bundle orders:** if a SNKR order has `qty>1` (one transaction, multiple physical cards), split it into N separate CSV rows — one per card with its own `psa_cert`. Collapsing them into a single line will cause the missing cards to be skipped silently when generating pre-in sheets.
+
 Optional `psa_verify_glob` JSON files (output of a PSA cert verifier) supply canonical card descriptions and exact grade numbers, overriding the CSV values when present.
+
+## Verifying cart coverage
+
+After running step 1, check which shipments cover a given cart:
+
+```bash
+python3 scripts/check-cart-coverage.py 84029 84491
+```
+
+Reports the FedEx tracking numbers that include each cart's transactions, and flags any tx not yet shipped.
 
 ## Requirements
 
